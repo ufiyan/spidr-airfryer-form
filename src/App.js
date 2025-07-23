@@ -12,6 +12,7 @@ function App() {
   });
   const [emailError, setEmailError] = useState('');
   const [pinError, setPinError] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -59,8 +60,68 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (emailError || pinError) return;
+    
+    // Check if all required fields are filled
+    const allFieldsFilled = Object.values(formData).every(value => value.trim() !== '');
+    if (!allFieldsFilled) {
+      alert('Please fill out all required fields.');
+      return;
+    }
+    
     console.log('Form Data:', formData);
+    setIsSubmitted(true);
   };
+
+  const handleReset = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      costGuess: '',
+      spidrPin: ''
+    });
+    setEmailError('');
+    setPinError('');
+    setIsSubmitted(false);
+  };
+
+  // Success page component
+  if (isSubmitted) {
+    return (
+      <div className="App success-page-container">
+        <div className="success-content">
+          <h1>✅ Form Submitted Successfully!</h1>
+          <div className="submission-details">
+            <h2>Your Submission Details:</h2>
+            <div className="details-grid">
+              <div className="detail-item">
+                <strong>Name:</strong> {formData.firstName} {formData.lastName}
+              </div>
+              <div className="detail-item">
+                <strong>Phone:</strong> {formData.phoneNumber}
+              </div>
+              <div className="detail-item">
+                <strong>Email:</strong> {formData.email}
+              </div>
+              <div className="detail-item">
+                <strong>Cost Guess:</strong> ${formData.costGuess}
+              </div>
+              <div className="detail-item">
+                <strong>Spidr PIN:</strong> {formData.spidrPin}
+              </div>
+            </div>
+          </div>
+          <p className="thank-you-message">
+            Thank you for your interest in our air fryer! We'll be in touch soon.
+          </p>
+          <button onClick={handleReset} className="reset-button">
+            Submit Another Response
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="App form-page-container">

@@ -47,6 +47,98 @@
   box-sizing: border-box;
 }
 
+.success-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.success-content {
+  background-color: var(--spidr-content-bg);
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.success-content h1 {
+  color: var(--spidr-text-light);
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.submission-details {
+  margin: 30px 0;
+  text-align: left;
+}
+
+.submission-details h2 {
+  color: var(--spidr-text-light);
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.details-grid {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 4px solid var(--spidr-primary-accent);
+  color: var(--spidr-text-light);
+  font-size: 1em;
+}
+
+.detail-item strong {
+  color: var(--spidr-primary-accent);
+  margin-right: 10px;
+}
+
+.thank-you-message {
+  color: var(--spidr-text-light);
+  font-size: 1.1em;
+  margin: 30px 0;
+  line-height: 1.6;
+}
+
+.reset-button {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--spidr-primary-accent);
+  color: var(--spidr-dark-bg);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.reset-button:hover {
+  background-color: #20c7ca;
+  transform: translateY(-2px);
+}
+
+.reset-button:active {
+  transform: translateY(0);
+}
+
 .air-fryer-form {
   background-color: var(--spidr-content-bg);
   max-width: 500px;
@@ -129,10 +221,19 @@ label {
 }
 
 @media (max-width: 600px) {
-  .air-fryer-form {
+  .air-fryer-form,
+  .success-content {
     padding: 20px;
   }
-  .form-page-container {
+  .form-page-container,
+  .success-page-container {
     padding: 10px;
+  }
+  .details-grid {
+    gap: 10px;
+  }
+  .detail-item {
+    padding: 12px;
+    font-size: 0.9em;
   }
 }
